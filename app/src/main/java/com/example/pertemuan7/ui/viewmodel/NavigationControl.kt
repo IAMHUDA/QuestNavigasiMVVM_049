@@ -27,11 +27,10 @@ fun NavigatorControl(
     navHost: NavHostController = rememberNavController(),
     modifier: Any
 ) {
-    Scaffold { isipadding ->
-        val uiState by viewModel.dataModel.collectAsState()
-        NavHost(
-            navController = navHost,
-            startDestination = Halaman.Form.name
+    val uiState by viewModel.dataModel.collectAsState()
+    NavHost(
+        navController = navHost,
+        startDestination = Halaman.Form.name
         ) {
             composable(route = Halaman.Form.name) {
                 val konteks = LocalContext.current
@@ -46,15 +45,15 @@ fun NavigatorControl(
                 )
             }
 
-            composable(route = Halaman.Data.name){
-                DetailMahasiswaView(
-                    dataMhs = _dataModel,
-                    onClickButton{
-                        navHost.popBackStack()
-                    }
-                )
-            }
-
+        composable(route = Halaman.Data.name) {
+            DetailMahasiswaView(
+                dataMhs = uiState,
+                modifier = Modifier,
+                onBackButton = { navHost.popBackStack() }
+            )
         }
+
+
+    }
     }
 }
