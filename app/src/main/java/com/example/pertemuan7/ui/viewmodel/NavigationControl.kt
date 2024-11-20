@@ -1,5 +1,7 @@
 package com.example.pertemuan7.ui.viewmodel
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,30 +22,30 @@ enum class Halaman{
 }
 
 @Composable
-fun Navigasi(
-    modifier: Modifier = Modifier,
+fun NavigatorControl(
     viewModel: MahasiswaViewModel = viewModel(),
-    navHost: NavHostController = rememberNavController()
-){
+    navHost: NavHostController = rememberNavController(),
+    modifier: Any
+) {
     Scaffold { isipadding ->
-        val _dataModel by viewModel.dataModel.collectAsState()
+        val uiState by viewModel.dataModel.collectAsState()
         NavHost(
-            modifier = modifier.padding(isipadding),
-            navController = navHost, startDestination = Halaman.Form.name
-        ){
-            composable(route = Halaman.Form.name){
+            navController = navHost,
+            startDestination = Halaman.Form.name
+        ) {
+            composable(route = Halaman.Form.name) {
                 val konteks = LocalContext.current
                 FormMahasiswaView(
-                    listGender = ListGender.listGender.map {
-                            isi -> konteks.resources.getString(isi)
+                    listGender = ListGender.listGender.map { isi ->
+                        konteks.resources.getString(isi)
                     },
                     onSubmitClick = {
                         viewModel.saveDataMhs(it)
                         navHost.navigate(Halaman.Data.name)
                     }
                 )
-
             }
+
             composable(route = Halaman.Data.name){
                 DetailMahasiswaView(
                     dataMhs = _dataModel,
@@ -52,6 +54,7 @@ fun Navigasi(
                     }
                 )
             }
+
+        }
     }
-}
 }
