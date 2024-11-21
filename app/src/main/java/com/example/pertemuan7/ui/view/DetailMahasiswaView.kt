@@ -19,6 +19,7 @@ fun DetailMahasiswaView(
     onBackButton: () -> Unit // Tambahkan parameter ini
 ) {
     val listDataMhs = listOf(
+        Pair("Nim", dataMhs.nim),
         Pair("Nama", dataMhs.nama),
         Pair("Gender", dataMhs.gender),
         Pair("Alamat", dataMhs.alamat),
