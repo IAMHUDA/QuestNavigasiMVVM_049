@@ -1,2 +1,4 @@
-![form input](https://github.com/user-attachments/assets/437bc96b-5ca9-47e3-977b-eaef6f0ed5b0)
-![hasil form](https://github.com/user-attachments/assets/0dc664e1-5e4a-45e4-acb7-3e93075cafbb)
+![image](https://github.com/user-attachments/assets/29f9b939-a44c-4109-9c02-3b02da6acc08)
+
+![image](https://github.com/user-attachments/assets/3382de74-b08a-41fe-8fab-a34267d50b74)
+
